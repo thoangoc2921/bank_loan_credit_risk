@@ -1,12 +1,16 @@
 # Bank Loan Credit Risk Analysis
 
+---
+
+## 1. Project Overview
+
 Phân tích rủi ro tín dụng danh mục vay ngân hàng — kết hợp SQL reporting, Python modeling và Power BI dashboard — nhằm trả lời câu hỏi: **chính sách phê duyệt hiện tại có đang chấp nhận quá nhiều rủi ro không, và nếu thay bằng mô hình dự đoán thì kết quả thay đổi thế nào?**
 
 Dataset gồm 38,576 khoản vay phát sinh năm 2021. Phân tích phát hiện bad rate tổng thể ở mức 13.82%, trong đó nhóm High Risk có bad rate lên đến 21.14%. Mô hình Logistic Regression (Challenger) cho thấy nếu áp dụng ngưỡng phê duyệt dựa trên xác suất vỡ nợ, bad rate có thể giảm xuống 9.11% — kết quả có ý nghĩa thống kê (p < 0.05).
 
 ---
 
-## Objectives
+## 2. Objectives
 
 - Xây dựng báo cáo KPI tháng và theo dõi xu hướng danh mục vay theo thời gian
 - Phân khúc danh mục theo rủi ro (Low / Medium / High) dựa trên grade, DTI và kỳ hạn
@@ -17,7 +21,7 @@ Dataset gồm 38,576 khoản vay phát sinh năm 2021. Phân tích phát hiện 
 
 ---
 
-## Project Scope & Tools
+## 3. Project Scope & Tools
 
 | Hạng mục | Chi tiết |
 |----------|----------|
@@ -29,7 +33,7 @@ Dataset gồm 38,576 khoản vay phát sinh năm 2021. Phân tích phát hiện 
 
 ---
 
-## Repository Structure
+## 4. Repository Structure
 
 ```
 bank-loan-credit-risk/
@@ -56,7 +60,7 @@ bank-loan-credit-risk/
 
 ---
 
-## Data Workflow
+## 5. Data Workflow
 
 ```
 financial_loan_data_excel.xlsx
@@ -88,7 +92,7 @@ financial_loan_data_excel.xlsx
 
 ---
 
-## Data Model & Schema
+## 6. Data Model & Schema
 
 | Cột | Kiểu | Mô tả |
 |-----|------|-------|
@@ -108,7 +112,7 @@ financial_loan_data_excel.xlsx
 
 ---
 
-## Analysis & Metrics
+## 7. Analysis & Metrics
 
 ### KPI Tổng quan (năm 2021)
 
@@ -151,7 +155,7 @@ Kiểm định: Welch t-test p < 0.05 → sự khác biệt có ý nghĩa thốn
 
 ---
 
-## Key Insights
+## 8. Key Insights
 
 **1. Tỷ lệ nợ xấu 13.8% — thấp hơn ngưỡng nguy hiểm nhưng cần theo dõi chặt**  
 Trong 38,600+ đơn vay, 5,333 đơn bị Charged Off (13.8%). Good Loan chiếm 86.2% với tổng tiền thu hồi đạt $435.8M trên $370.2M giải ngân — danh mục vẫn sinh lời. Tuy nhiên tổng thiệt hại từ Bad Loan là $65.5M giải ngân với chỉ $37.3M thu hồi được — chênh lệch $28.2M là rủi ro thực sự cần kiểm soát.
@@ -182,7 +186,7 @@ Tại threshold 0.35, Challenger giảm bad rate từ 13.82% xuống 9.11%, như
 
 ---
 
-## Recommendations
+## 9. Recommendations
 
 **1. Thắt chặt tiêu chí phê duyệt cho vay Debt Consolidation kỳ hạn 60 tháng**  
 Kết hợp 2 yếu tố rủi ro cao nhất (mục đích + kỳ hạn): yêu cầu DTI ≤ 30% và lịch sử tín dụng tối thiểu 2 năm không có Charged Off trước đó. *(Credit Risk)*
@@ -204,7 +208,7 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 
 ---
 
-## Assumptions & Limitations
+## 10. Assumptions & Limitations
 
 **Assumptions:**
 - `is_bad = 1` khi `loan_status = 'Charged Off'`, bỏ qua trạng thái `Current` (khoản vay chưa đáo hạn, kết quả chưa xác định)
@@ -220,7 +224,7 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 
 ---
 
-## Future Enhancements
+## 11. Future Enhancements
 
 - Thử nghiệm mô hình XGBoost, LightGBM để cải thiện AUC và KS
 - Thêm weight of evidence (WoE) và information value (IV) để đánh giá predictive power của từng biến
@@ -230,7 +234,7 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 
 ---
 
-## Deliverables
+## 12. Deliverables
 
 | File | Mô tả |
 |------|-------|
@@ -243,7 +247,7 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 
 ---
 
-## Author
+## 13. Author
 
 **Phan Ngoc Kim Thoa**
 - 📧 thoaphan2921@gmail.com
