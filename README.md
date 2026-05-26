@@ -4,9 +4,9 @@
 
 ## 1. Project Overview
 
-Phân tích rủi ro tín dụng danh mục vay ngân hàng — kết hợp SQL reporting, Python modeling và Power BI dashboard — nhằm trả lời câu hỏi: **chính sách phê duyệt hiện tại có đang chấp nhận quá nhiều rủi ro không, và nếu thay bằng mô hình dự đoán thì kết quả thay đổi thế nào?**
+Phân tích rủi ro tín dụng danh mục vay ngân hàng, kết hợp SQL reporting, Python modeling và Power BI dashboard nhằm trả lời câu hỏi: **chính sách phê duyệt hiện tại có đang chấp nhận quá nhiều rủi ro không, và nếu thay bằng mô hình dự đoán thì kết quả thay đổi thế nào?**
 
-Dataset gồm 38,576 khoản vay phát sinh năm 2021. Phân tích phát hiện bad rate tổng thể ở mức 13.82%, trong đó nhóm High Risk có bad rate lên đến 21.14%. Mô hình Logistic Regression (Challenger) cho thấy nếu áp dụng ngưỡng phê duyệt dựa trên xác suất vỡ nợ, bad rate có thể giảm xuống 9.11% — kết quả có ý nghĩa thống kê (p < 0.05).
+Dataset gồm 38,576 khoản vay phát sinh năm 2021. Phân tích phát hiện bad rate tổng thể ở mức 13.82%, trong đó nhóm High Risk có bad rate lên đến 21.14%. Mô hình Logistic Regression (Challenger) cho thấy nếu áp dụng ngưỡng phê duyệt dựa trên xác suất vỡ nợ, bad rate có thể giảm xuống 9.11% và kết quả có ý nghĩa thống kê (p < 0.05).
 
 ---
 
@@ -158,13 +158,13 @@ Kiểm định: Welch t-test p < 0.05 → sự khác biệt có ý nghĩa thốn
 ## 8. Key Insights
 
 **1. Tỷ lệ nợ xấu 13.8% — thấp hơn ngưỡng nguy hiểm nhưng cần theo dõi chặt**  
-Trong 38,600+ đơn vay, 5,333 đơn bị Charged Off (13.8%). Good Loan chiếm 86.2% với tổng tiền thu hồi đạt $435.8M trên $370.2M giải ngân — danh mục vẫn sinh lời. Tuy nhiên tổng thiệt hại từ Bad Loan là $65.5M giải ngân với chỉ $37.3M thu hồi được — chênh lệch $28.2M là rủi ro thực sự cần kiểm soát.
+Trong 38,600+ đơn vay, 5,333 đơn bị Charged Off (13.8%). Good Loan chiếm 86.2% với tổng tiền thu hồi đạt $435.8M trên $370.2M giải ngân, tức là danh mục vẫn sinh lời. Tuy nhiên tổng thiệt hại từ Bad Loan là $65.5M giải ngân với chỉ $37.3M thu hồi được, so với chênh lệch $28.2M là rủi ro thực sự cần kiểm soát.
 
 **2. Bad rate phân hóa rõ rệt theo segment — không thể dùng một chính sách cho tất cả**  
 High Risk chiếm 19.44% danh mục nhưng có bad rate 21.14%, gấp gần 3 lần nhóm Low Risk (7.84%). Một chính sách phê duyệt đồng nhất đang để lộ rủi ro tập trung ở nhóm này mà không có cơ chế kiểm soát riêng.
 
 **3. Debt Consolidation chiếm 47% tổng đơn — phân khúc lớn nhất và cần giám sát riêng**  
-Gần một nửa danh mục là vay để trả nợ cũ — vừa là nhu cầu hợp lệ vừa là dấu hiệu khách hàng đang có áp lực tài chính. Tỷ lệ Charged Off trong nhóm này cần được so sánh riêng với các mục đích vay khác (credit card, home improvement...) để đánh giá rủi ro chính xác hơn.
+Gần một nửa danh mục là vay để trả nợ cũ, vừa là nhu cầu hợp lệ vừa là dấu hiệu khách hàng đang có áp lực tài chính. Tỷ lệ Charged Off trong nhóm này cần được so sánh riêng với các mục đích vay khác (credit card, home improvement...) để đánh giá rủi ro chính xác hơn.
 
 **4. Vay 60 tháng có tỷ lệ nợ xấu cao hơn vay 36 tháng**  
 Khách hàng chọn kỳ hạn dài thường có khả năng trả nợ hàng tháng thấp hơn, dẫn đến rủi ro tích lũy theo thời gian. Phân khúc 60 tháng cần được áp dụng tiêu chí DTI chặt hơn trong quá trình phê duyệt.
@@ -176,7 +176,7 @@ Có seasonality rõ rệt: nhu cầu vay tăng mạnh cuối năm, có thể do 
 Vintage analysis cho thấy bad rate dao động từ 11.58% (tháng 4) đến 15.08% (tháng 2) mà không theo pattern đơn giản. Điều này gợi ý rủi ro liên quan đến đặc điểm từng đợt phát vay — mục đích vay, phân khúc khách hàng theo mùa — hơn là xu hướng tổng thể.
 
 **7. Grade A–B tập trung Good Loan, Grade E–G tập trung Bad Loan — hệ thống xếp hạng hoạt động đúng hướng**  
-Tuy nhiên cần kiểm tra xem Grade E–G có đang được phê duyệt mà không kèm điều kiện thắt chặt bổ sung hay không, đặc biệt trong nhóm vay Debt Consolidation kỳ hạn 60 tháng.
+Tuy nhiên cần kiểm tra xem Grade E-G có đang được phê duyệt mà không kèm điều kiện thắt chặt bổ sung hay không, đặc biệt trong nhóm vay Debt Consolidation kỳ hạn 60 tháng.
 
 **8. Danh mục ổn định trong năm — nền tảng tốt để xây benchmark mô hình**  
 PSI của tất cả biến đều dưới 0.05 (ngưỡng Stable < 0.10), cho thấy phân phối grade, purpose và risk_segment không thay đổi đáng kể giữa H1 và H2. Đây là điều kiện thuận lợi để mô hình học từ dữ liệu lịch sử và áp dụng sang kỳ tiếp theo.
@@ -195,16 +195,16 @@ Kết hợp 2 yếu tố rủi ro cao nhất (mục đích + kỳ hạn): yêu c
 Với nhóm High Risk (bad rate 21.14%), cân nhắc yêu cầu tài sản đảm bảo bổ sung hoặc giới hạn hạn mức. Với nhóm Low Risk (bad rate 7.84%), có thể nới lỏng điều kiện để tăng khả năng tiếp cận tín dụng. *(Credit Policy)*
 
 **3. Pilot Challenger policy trong 3 tháng ở phân khúc rủi ro cao nhất**  
-Thay vì áp dụng toàn diện, thử nghiệm với khoản vay Grade D–G hoặc Debt Consolidation — nhóm chiếm phần lớn bad loan. Đo lường bad rate và approval rate thực tế trước khi mở rộng. Threshold 0.40–0.45 là vùng cân bằng nên xem xét đầu tiên. *(Risk Management)*
+Thay vì áp dụng toàn diện, thử nghiệm với khoản vay Grade D–G hoặc Debt Consolidation, là nhóm chiếm phần lớn bad loan. Đo lường bad rate và approval rate thực tế trước khi mở rộng. Threshold 0.40–0.45 là vùng cân bằng nên xem xét đầu tiên. *(Risk Management)*
 
 **4. Xây dựng Early Warning System cho danh mục có nguy cơ**  
-Hiện tại chỉ biết khi đã Charged Off. Cần theo dõi chỉ số trung gian: số ngày trễ hạn đầu tiên, số lần gia hạn — để can thiệp trước khi chuyển thành nợ xấu, đặc biệt với nhóm Grade E–G đang còn Current. *(Risk Management)*
+Hiện tại chỉ biết khi đã Charged Off. Cần theo dõi chỉ số trung gian: số ngày trễ hạn đầu tiên, số lần gia hạn để can thiệp trước khi chuyển thành nợ xấu, đặc biệt với nhóm Grade E–G đang còn Current. *(Risk Management)*
 
 **5. Lên kế hoạch nguồn vốn Q4 dựa trên seasonality**  
 Nhu cầu vay tăng ~7% vào tháng 12 hàng năm. Bộ phận nguồn vốn nên chuẩn bị trước 2–3 tháng để đảm bảo tỷ lệ phê duyệt không bị siết do thiếu thanh khoản đúng vào peak season. *(Treasury / Capital Planning)*
 
 **6. Theo dõi PSI định kỳ để phát hiện population shift sớm**  
-Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên tục — đặc biệt khi có thay đổi chính sách kinh tế vĩ mô hoặc ra mắt sản phẩm vay mới. Đề xuất review ngưỡng threshold theo quý dựa trên kết quả vintage thực tế. *(Data Analytics)*
+Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên tục, đặc biệt khi có thay đổi chính sách kinh tế vĩ mô hoặc ra mắt sản phẩm vay mới. Đề xuất review ngưỡng threshold theo quý dựa trên kết quả vintage thực tế. *(Data Analytics)*
 
 ---
 
@@ -213,14 +213,14 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 **Assumptions:**
 - `is_bad = 1` khi `loan_status = 'Charged Off'`, bỏ qua trạng thái `Current` (khoản vay chưa đáo hạn, kết quả chưa xác định)
 - Risk segment được xây dựng theo rule-based đơn giản (grade + DTI + term), không dựa trên mô hình thống kê
-- A/B Test là simulation hồi tố (retrospective) trên dữ liệu lịch sử, không phải live experiment — kết quả phản ánh **what if** chứ không đảm bảo performance thực tế khi triển khai
+- A/B Test là simulation hồi tố (retrospective) trên dữ liệu lịch sử, không phải live experiment, kết quả phản ánh **what if** chứ không đảm bảo performance thực tế khi triển khai
 
 **Limitations:**
 - Dataset 1 năm (2021) nên không thể so sánh year-over-year; PSI được đo H1 vs H2 thay vì so với năm trước
 - Mô hình Logistic Regression có AUC = 0.68 — mức chấp nhận được nhưng còn dư địa cải thiện, đặc biệt với các mô hình tree-based (XGBoost, LightGBM)
-- Không có thông tin về lịch sử tín dụng (số lần trễ hạn trước đây, tổng dư nợ các tổ chức khác) — các biến quan trọng này có thể cải thiện đáng kể khả năng dự đoán
+- Không có thông tin về lịch sử tín dụng (số lần trễ hạn trước đây, tổng dư nợ các tổ chức khác), các biến quan trọng này có thể cải thiện đáng kể khả năng dự đoán
 - KS = 0.13 cho thấy khả năng phân biệt của mô hình còn hạn chế so với scorecard chuẩn ngân hàng (KS > 0.30)
-- A/B group được assign ngẫu nhiên trên toàn bộ dataset trong simulation — thực tế cần phân nhóm theo thời gian (time-based split) để tránh look-ahead bias
+- A/B group được assign ngẫu nhiên trên toàn bộ dataset trong simulation, thực tế cần phân nhóm theo thời gian (time-based split) để tránh look-ahead bias
 
 ---
 
@@ -228,7 +228,7 @@ Hiện tại PSI ổn định (tất cả < 0.05), nhưng cần theo dõi liên 
 
 - Thử nghiệm mô hình XGBoost, LightGBM để cải thiện AUC và KS
 - Thêm weight of evidence (WoE) và information value (IV) để đánh giá predictive power của từng biến
-- Xây dựng scorecard dạng điểm số thay vì ngưỡng xác suất — dễ áp dụng hơn trong thực tế vận hành
+- Xây dựng scorecard dạng điểm số thay vì ngưỡng xác suất để dễ áp dụng hơn trong thực tế vận hành
 - Mở rộng phân tích sang dữ liệu đa năm để có thể thực hiện year-over-year PSI và vintage dài hạn
 - Tích hợp SHAP values để giải thích từng quyết định phê duyệt (model explainability)
 
