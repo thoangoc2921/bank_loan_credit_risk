@@ -252,6 +252,6 @@ PSI is currently stable (all values below **0.05**), but continuous monitoring i
 ## 13. Author
 
 **Phan Ngoc Kim Thoa**
-- 📧 thoaphan2921@gmail.com
+- 📧 phanngockimthoa2921@gmail.com
 - 💼 [LinkedIn](https://www.linkedin.com/in/thoangoc2906)
 - 🐙 [GitHub](https://github.com/thoangoc2921)
